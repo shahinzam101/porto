@@ -26,16 +26,25 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Dark Mode Preload -->
+    <!-- Theme initialization - Must be before any other scripts -->
     <script is:inline>
       // Initialize theme immediately to prevent flash
-      const savedTheme = localStorage.getItem('theme') || 'light';
-		if (savedTheme === 'dark') {
-		document.documentElement.classList.add('dark');
-		} else {
-		document.documentElement.classList.remove('dark');
-		}
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        
+        // Save the initial theme
+        localStorage.setItem('theme', theme);
+      })();
     </script>
+
   </head>
 
   <body class="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-sans transition-colors duration-300">
@@ -44,11 +53,11 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
       <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
         <!-- Logo & Name -->
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+          <!-- <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
             <span class="text-white font-bold text-sm">SZ</span>
-          </div>
-          <h1 class="text-xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            شاهین زمانی
+          </div> -->
+          <h1 class="text-xl font-extrabold bg-gradient-to-r bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 bg-clip-text text-transparent">
+           Falcode
           </h1>
         </div>
 
@@ -74,32 +83,6 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
 
         <!-- Actions -->
         <div class="flex items-center gap-3">
-          <!-- Theme Switch -->
-          <button 
-            id="theme-toggle" 
-            aria-label="تغییر تم" 
-            class="p-2.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-200 group"
-          >
-            <!-- Sun Icon (for Light Mode) -->
-            <svg 
-              id="sun-icon" 
-              class="w-5 h-5 text-amber-500 transition-colors duration-200" 
-              fill="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
-            </svg>
-            <!-- Moon Icon (for Dark Mode) -->
-            <svg 
-              id="moon-icon" 
-              class="w-5 h-5 text-blue-400 transition-colors duration-200 hidden" 
-              fill="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
-            </svg>
-          </button>
-
           <!-- Mobile Menu -->
           <button 
             id="mobile-menu-btn" 
@@ -120,18 +103,6 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
           <a href="#skills" class="block py-3 px-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md transition-colors">مهارت‌ها</a>
           <a href="#projects" class="block py-3 px-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md transition-colors">پروژه‌ها</a>
           <a href="#contact" class="block py-3 px-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md transition-colors">تماس</a>
-          <button 
-            id="mobile-theme-toggle" 
-            class="flex items-center gap-2 py-3 px-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-md transition-colors text-right"
-          >
-            <svg id="mobile-moon-icon" class="w-5 h-5 text-blue-400 hidden" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
-            </svg>
-            <svg id="mobile-sun-icon" class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
-            </svg>
-            <span>تغییر تم</span>
-          </button>
         </div>
       </div>
     </header>
@@ -143,11 +114,11 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
     <footer class="bg-zinc-50 dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700">
       <div class="container mx-auto px-4 py-8 text-center">
         <div class="flex justify-center items-center gap-3 mb-4">
-          <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+          <!-- <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
             <span class="text-white text-xs font-bold">SZ</span>
-          </div>
-          <span class="text-lg font-semibold text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text">
-            شاهین زمانی
+          </div> -->
+          <span class="text-lg font-semibold text-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 bg-gradient-to-r bg-clip-text">
+            Falcode
           </span>
         </div>
         <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2">مهندس کامپیوتر - توسعه‌دهنده وب و نرم‌افزار</p>
@@ -155,79 +126,22 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
       </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Main JavaScript -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        console.log('🚀 DOM loaded, initializing theme system...');
+        
         const html = document.documentElement;
-        const sunIcon = document.getElementById('sun-icon');
-        const moonIcon = document.getElementById('moon-icon');
-        const mobileSunIcon = document.getElementById('mobile-sun-icon');
-        const mobileMoonIcon = document.getElementById('mobile-moon-icon');
         const themeToggle = document.getElementById('theme-toggle');
         const mobileToggle = document.getElementById('mobile-theme-toggle');
-
-        // Check current theme
-        const getCurrentTheme = () => {
-          return html.classList.contains('dark') ? 'dark' : 'light';
-        };
-
-        // Update icons based on current theme
-        const updateIcons = () => {
-          const isDark = getCurrentTheme() === 'dark';
-          
-          // Desktop icons
-          if (sunIcon && moonIcon) {
-            sunIcon.classList.toggle('hidden', isDark);
-            moonIcon.classList.toggle('hidden', !isDark);
-          }
-          
-          // Mobile icons
-          if (mobileSunIcon && mobileMoonIcon) {
-            mobileSunIcon.classList.toggle('hidden', isDark);
-            mobileMoonIcon.classList.toggle('hidden', !isDark);
-          }
-        };
-
-        // Toggle theme function
-        const toggleTheme = () => {
-          const currentTheme = getCurrentTheme();
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-          
-          // Apply new theme
-          html.classList.toggle('dark', newTheme === 'dark');
-          
-          // Save to localStorage
-          localStorage.setItem('theme', newTheme);
-          
-          // Update icons
-          updateIcons();
-          
-          console.log('Theme changed to:', newTheme); // Debug log
-        };
-
-        // Event listeners
-        if (themeToggle) {
-          themeToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleTheme();
-          });
-        }
-        
-        if (mobileToggle) {
-          mobileToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleTheme();
-          });
-        }
-
-        // Initialize icons on page load
-        updateIcons();
-
-        // Mobile menu toggle
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        
+
+
+
+        // Mobile menu functionality
         if (mobileMenuBtn && mobileMenu) {
+          console.log('✅ Mobile menu elements found');
           mobileMenuBtn.addEventListener('click', (e) => {
             e.preventDefault();
             mobileMenu.classList.toggle('hidden');
