@@ -1,0 +1,188 @@
+---
+const projects = [
+  {
+    name: "سامانه فروش بلیت",
+    description: "یک وب‌اپ برای خرید بلیت اتوبوس با Django و React.",
+    image: "/projects/ticket-app.png",
+    links: [
+      { label: "گیت‌هاب فرانت‌اند", url: "https://github.com/lachiincompany/blito-frontend" },
+      { label: "گیت‌هاب بک‌اند", url: "https://github.com/lachiincompany/blito-backend" },
+    ],
+    techStack: ["Django", "DRF", "React", "Tailwind"]
+  },
+
+];
+---
+
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Vazirmatn', sans-serif;
+        direction: rtl;
+      }
+
+      .project-card {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+
+      .project-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-image {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-image::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .project-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        z-index: 2;
+        position: relative;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
+      }
+
+      .tech-tag {
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border: 1px solid rgba(102, 126, 234, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .tech-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .dark .glass-effect {
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 bg-zinc-50 dark:bg-zinc-900 min-h-screen">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-zinc-800 dark:text-zinc-100 mb-16">
+          پروژه‌های من
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" id="projects-container">
+          {projects.map((project, index) => (
+            <div
+              class="project-card group glass-effect rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:rotate-1 relative"
+              style={`--project-index: ${index};`}
+            >
+              <!-- Project Image -->
+              <div class="project-image h-48 relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <!-- Overlay for better text readability if needed -->
+                <div class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <!-- Project Content -->
+              <div class="p-6 relative z-10">
+                <h3 class="text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-3 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors duration-300">
+                  {project.name}
+                </h3>
+                
+                <p class="text-zinc-600 dark:text-zinc-400 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <!-- Tech Stack -->
+                <div class="mb-6">
+                  <div class="flex flex-wrap gap-2">
+                    {project.techStack.map((tech) => (
+                      <span class="tech-tag text-zinc-700 dark:text-zinc-300 px-3 py-1 rounded-full text-sm font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <!-- Project Links -->
+                <div class="flex flex-wrap gap-3">
+                {project.links.map((link) => (
+                    <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 min-w-[120px] text-center py-3 px-4 rounded-lg transition-all duration-300 text-sm font-medium transform hover:scale-105 shadow-lg hover:shadow-xl
+                        bg-zinc-800 dark:bg-zinc-700 text-white hover:bg-zinc-700 dark:hover:bg-zinc-600"
+                    >
+                    {link.label}
+                    </a>
+                ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+<!-- 
+        <div class="mt-16 text-center">
+          <div class="inline-flex items-center gap-2 bg-zinc-800 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <span class="text-lg">🚀</span>
+            <span class="font-medium">بیشتر پروژه‌ها در GitHub من</span>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <script is:inline>
+      window.addEventListener("load", () => {
+        const cards = document.querySelectorAll(".project-card");
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add("animate");
+          }, index * 150); // staggered animation
+        });
+      });
+    </script>
+  </body>
+</html>
