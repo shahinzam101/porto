@@ -1,0 +1,109 @@
+---
+import { onMount } from 'astro/jsx-runtime';
+
+const skills = [
+  { name: "Python", level: 90, icon: "/icons/python-icon.svg" },
+  { name: "Django", level: 85, icon: "/icons/django-icon.svg" },
+  { name: "Django REST Framework", level: 80, icon: "/icons/django-rest-framework-icon.svg" },
+  { name: "Git & GitHub", level: 85, icon: "/icons/git-icon.svg" },
+  { name: "Docker", level: 55, icon: "/icons/docker-icon.svg" },
+  { name: "Streamlit", level: 45, icon: "/icons/streamlit-icon.svg" },
+  { name: "FastAPI", level: 50, icon: "/icons/fastapi-icon.svg" },
+  { name: "Next.js", level: 60, icon: "/icons/nextjs-icon.svg" },
+  { name: "HTML / CSS", level: 65, icon: "/icons/html-icon.svg" },
+  { name: "SQL / PostgreSQL", level: 70, icon: "/icons/sql-postgresql-icon.svg" },
+];
+
+const getSkillLevel = (level) => {
+  if (level >= 80) return "خبره";
+  if (level >= 60) return "متوسط تا پیشرفته";
+  if (level >= 40) return "متوسط";
+  return "مبتدی";
+};
+---
+
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Skills</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Vazirmatn', sans-serif;
+        direction: rtl;
+      }
+
+      .skill-progress {
+        width: 0%;
+        transition: width 1.5s ease-out;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 dark:bg-gray-900">
+    <section class="py-20 bg-zinc-50 dark:bg-zinc-900 min-h-screen">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-zinc-800 dark:text-zinc-100 mb-16">
+          مهارت‌های من
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="skills-container">
+          {skills.map((skill, index) => (
+            <div
+              class="skill-card group bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-lg border border-zinc-200 dark:border-zinc-700"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div class="text-3xl">
+                    <img src={skill.icon} alt={skill.name + 'icon'} class="w-8 h-8 object-contain" loading="lazy">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                      {skill.name}
+                    </span>
+                    <span class="text-sm font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-700 px-2 py-1 rounded-full">
+                      {skill.level}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="w-full h-4 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">
+                  <div
+                    class="skill-progress bg-zinc-600 dark:bg-zinc-300 h-full rounded-full"
+                    style={`--skill-index: ${index};`}
+                    data-target={skill.level}
+                  ></div>
+                </div>
+                <div class="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+                  {getSkillLevel(skill.level)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-16 text-center">
+          <div class="inline-flex items-center gap-2 bg-zinc-800 text-white px-6 py-3 rounded-full shadow-lg">
+            <span class="text-lg">💡</span>
+            <span class="font-medium">هر روز در حال یادگیری چیزای جدیدم</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+      window.addEventListener("load", () => {
+        const bars = document.querySelectorAll(".skill-progress");
+        bars.forEach((bar, index) => {
+          const level = bar.getAttribute("data-target");
+          setTimeout(() => {
+            bar.style.width = level + "%";
+          }, index * 200); // delay per skill
+        });
+      });
+    </script>
+  </body>
+</html>

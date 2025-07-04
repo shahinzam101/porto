@@ -1,0 +1,26 @@
+---
+// فایل: components/Hero.astro
+---
+<section id="hero" class="min-h-[80vh] flex flex-col items-center justify-center text-center px-4 py-20">
+  <div class="w-36 h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-zinc-300 dark:border-zinc-600 shadow-xl mb-6">
+    <img src="/profile.jpg" alt="Shahin Zamani" class="w-full h-full object-cover" />
+  </div>
+
+  <h1 id="typewriter" class="text-3xl md:text-5xl font-bold text-zinc-800 dark:text-zinc-100 leading-relaxed font-vazir whitespace-nowrap"></h1>
+
+  <script is:inline>
+    const text = "خوش اومدی، من شاهینم";
+    const el = document.getElementById("typewriter");
+    let i = 0;
+
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 100); // سرعت تایپ
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+  </script>
+</section>
