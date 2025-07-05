@@ -8,10 +8,14 @@ const projects = [
       { label: "گیت‌هاب فرانت‌اند", url: "https://github.com/lachiincompany/blito-frontend" },
       { label: "گیت‌هاب بک‌اند", url: "https://github.com/lachiincompany/blito-backend" },
     ],
-    techStack: ["Django", "DRF", "Nextjs", "ShadCN", "Docker"]
+    techStack: ["Django", "DRF", "Nextjs", "ShadCN", "Docker"],
+    team: {
+      name: "تیم لاچین",
+      url: "https://github.com/lachiincompany"
+    }
   },
-  // اینجا میتونی پروژه‌های بیشتر اضافه کنی
 ];
+
 ---
 
 <section class="py-20 bg-zinc-50 dark:bg-zinc-900 min-h-screen">
@@ -52,6 +56,27 @@ const projects = [
                   </span>
                 ))}
               </div>
+            </div>
+            <!-- Team Info -->
+            <div class="mt-4 flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500 dark:text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87M16 11a4 4 0 10-8 0 4 4 0 008 0z" />
+              </svg>
+              {project.team ? (
+                <span>
+                  عضو
+                  <a
+                    href={project.team.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-blue-600 dark:text-blue-400 font-semibold hover:underline mx-1"
+                  >
+                    {project.team.name}
+                  </a>
+                </span>
+              ) : (
+                <span>پروژه انفرادی</span>
+              )}
             </div>
 
             <!-- Project Links -->
