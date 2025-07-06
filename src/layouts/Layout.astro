@@ -110,21 +110,21 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
     <main class="min-h-screen">
       <slot />
     </main>
-
-    <footer class="bg-zinc-50 dark:bg-zinc-800 border-t border-zinc-200 dark:border-zinc-700">
-      <div class="container mx-auto px-4 py-8 text-center">
-        <div class="flex justify-center items-center gap-3 mb-4">
-          <!-- <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
-            <span class="text-white text-xs font-bold">SZ</span>
-          </div> -->
-          <span class="text-lg font-semibold text-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 bg-gradient-to-r bg-clip-text">
-            Falcode
-          </span>
-        </div>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2">مهندس کامپیوتر - توسعه‌دهنده وب و نرم‌افزار</p>
-        <p class="text-xs text-zinc-500 dark:text-zinc-400">© {new Date().getFullYear()} تمامی حقوق برای شاهین محفوظ است.</p>
+    
+    <footer class="text-center py-6 text-sm text-gray-500">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-2">
+        <span>ساخته شده با</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#e02424" class="size-5">
+          <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+        </svg>
+        <span>توسط شاهین</span>
+      </div>
+      
+      <div class="mt-2 text-xs opacity-70">
+        © {new Date().getFullYear()} شاهین. تمامی حقوق محفوظ است.
       </div>
     </footer>
+
 
     <!-- Main JavaScript -->
     <script>
@@ -179,5 +179,6 @@ const { title, description = "رزومه و نمونه کار مهندس کام�
         });
       });
     </script>
+    
   </body>
 </html>
