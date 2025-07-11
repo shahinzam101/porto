@@ -1,52 +1,110 @@
-# Astro Starter Kit: Basics
+# 🚀 پورتفولیو شخصی - Falcode
 
-```sh
-npm create astro@latest -- --template basics
+<div align="center">
+
+![Astro](https://img.shields.io/badge/Astro-5.11.0-FF5D01?style=for-the-badge&logo=astro)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.11-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+</div>
+
+## 📋 درباره پروژه
+
+این یک **پورتفولیو شخصی** مدرن و زیبا است که با استفاده از **Astro** و **Tailwind CSS** ساخته شده. این وب‌سایت شامل بخش‌های مختلفی است که مهارت‌ها، پروژه‌ها و اطلاعات تماس شما را به نمایش می‌گذارد.
+
+### ✨ ویژگی‌های کلیدی
+
+- 🎨 **طراحی مدرن و ریسپانسیو** - سازگار با تمام دستگاه‌ها
+- ⚡ **سرعت بالا** - بهینه‌سازی شده با Astro
+- 🌙 **حالت تاریک/روشن** - تجربه کاربری بهتر
+- 📱 **سازگار با موبایل** - طراحی اولویت‌دار موبایل
+- 🎯 **SEO بهینه** - برای رتبه‌بندی بهتر در موتورهای جستجو
+
+## 🏗️ ساختار پروژه
+
+```
+porto/
+├── 📁 public/          # فایل‌های استاتیک
+│   ├── 🖼️ icons/       # آیکون‌های مهارت‌ها
+│   ├── 📸 projects/    # تصاویر پروژه‌ها
+│   └── 👤 profile.jpg  # تصویر پروفایل
+├── 📁 src/
+│   ├── 🧩 components/  # کامپوننت‌های قابل استفاده مجدد
+│   ├── 📄 pages/       # صفحات وب‌سایت
+│   ├── 🎨 styles/      # استایل‌های CSS
+│   └── 📐 layouts/     # قالب‌های صفحه
+└── ⚙️ config files     # فایل‌های پیکربندی
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 شروع کار
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### پیش‌نیازها
+- Node.js (نسخه 16 یا بالاتر)
+- npm یا yarn
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### نصب و راه‌اندازی
 
-## 🚀 Project Structure
+```bash
+# کلون کردن پروژه
+git clone [آدرس-مخزن-شما]
+cd porto
 
-Inside of your Astro project, you'll see the following folders and files:
+# نصب وابستگی‌ها
+npm install
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+# اجرای سرور توسعه
+npm run dev
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+سایت در آدرس `http://localhost:4321` قابل دسترسی خواهد بود.
 
-## 🧞 Commands
+## 📦 دستورات مفید
 
-All commands are run from the root of the project, from a terminal:
+| دستور | توضیح |
+|-------|-------|
+| `npm run dev` | اجرای سرور توسعه |
+| `npm run build` | ساخت نسخه تولید |
+| `npm run preview` | پیش‌نمایش نسخه تولید |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🎨 بخش‌های وب‌سایت
 
-## 👀 Want to learn more?
+### 🏠 صفحه اصلی (Hero)
+- معرفی شخصی با انیمیشن تایپ
+- تصویر پروفایل
+- پیام خوش‌آمدگویی
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 💼 مهارت‌ها (Skills)
+- نمایش مهارت‌های فنی
+- آیکون‌های زیبا برای هر مهارت
+- دسته‌بندی مهارت‌ها
+
+### 🚀 پروژه‌ها (Projects)
+- گالری پروژه‌های انجام شده
+- توضیحات کامل هر پروژه
+- لینک‌های دسترسی
+
+### 📞 تماس (Contact)
+- فرم تماس
+- اطلاعات ارتباطی
+- شبکه‌های اجتماعی
+
+## 🛠️ تکنولوژی‌های استفاده شده
+
+- **Astro** - فریم‌ورک اصلی
+- **Tailwind CSS** - استایل‌دهی
+- **TypeScript** - تایپ‌اسکریپت
+- **Vite** - ابزار ساخت
+
+## 📝 مجوز
+
+این پروژه تحت مجوز MIT منتشر شده است.
+
+---
+
+<div align="center">
+
+**ساخته شده با ❤️ توسط شاهین **
+
+
+
+</div>
